@@ -7,10 +7,8 @@ import {
   useAnchorWallet,
   useConnection,
 } from "@solana/wallet-adapter-react";
-import Title from "./Title";
-import Link from "next/link";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { getFavoriteDomain } from "@bonfida/spl-name-service";
+import Navbar from "./Navbar";
 
 export default function Leaderboard() {
   const { connection } = useConnection();
@@ -22,7 +20,7 @@ export default function Leaderboard() {
   const [userPosition, setUserPosition] = useState<number>(0);
   const anchorWallet: AnchorWallet | undefined = useAnchorWallet();
   const mainnet = new Connection(
-    "https://try-rpc.mainnet.solana.blockdaemon.tech"
+    "https://rpc.helius.xyz/?api-key=cc778adb-f9ab-45da-ba44-b4096f663c16"
   );
 
   const anchorProvider: AnchorProvider | undefined = useMemo(() => {
@@ -122,26 +120,8 @@ export default function Leaderboard() {
   return (
     <div className="flex flex-col items-stretch gap-8 px-4 pt-16 mx-auto w-[60%]">
       <main className="flex flex-col gap-4">
-        <Title />
-
-        <div className="basis-1/4 flex justify-around items-center">
-          <Link href="/">
-            <div className="text-xl uppercase font-bold hover:cursor-pointer">
-              Game
-            </div>
-          </Link>
-          <Link href="/leaderboard">
-            <div className="text-xl uppercase font-bold hover:cursor-pointer">
-              Leaderboard
-            </div>
-          </Link>
-          <Link href="/achievements">
-            <div className="text-xl uppercase font-bold hover:cursor-pointer">
-              Achievements
-            </div>
-          </Link>
-          <WalletMultiButton className="!bg-gray-900 hover:scale-105" />
-        </div>
+        
+        <Navbar />
 
         <div className="flex justify-center">
           <div className="font-bold uppercase text-5xl mt-10 text-[#FA6E00] underline">
@@ -218,8 +198,6 @@ export default function Leaderboard() {
             </div>
           </div>
         )}
-        {/* <Powered />
-<Footer /> */}
       </main>
     </div>
   );

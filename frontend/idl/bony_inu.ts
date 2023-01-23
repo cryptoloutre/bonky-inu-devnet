@@ -66,7 +66,7 @@ export type BonkyInu = {
       "args": []
     },
     {
-      "name": "initializeTokenVault",
+      "name": "initializeBonkVault",
       "accounts": [
         {
           "name": "tokenpda",
@@ -170,11 +170,6 @@ export type BonkyInu = {
           "name": "owner",
           "isMut": true,
           "isSigner": true
-        },
-        {
-          "name": "ownerTokenAccount",
-          "isMut": true,
-          "isSigner": false
         },
         {
           "name": "mint",
@@ -328,7 +323,7 @@ export type BonkyInu = {
       ]
     },
     {
-      "name": "withdrawTokenVault",
+      "name": "withdrawBonkVault",
       "accounts": [
         {
           "name": "withdrawer",
@@ -670,7 +665,7 @@ export const IDL: BonkyInu = {
       "args": []
     },
     {
-      "name": "initializeTokenVault",
+      "name": "initializeBonkVault",
       "accounts": [
         {
           "name": "tokenpda",
@@ -774,11 +769,6 @@ export const IDL: BonkyInu = {
           "name": "owner",
           "isMut": true,
           "isSigner": true
-        },
-        {
-          "name": "ownerTokenAccount",
-          "isMut": true,
-          "isSigner": false
         },
         {
           "name": "mint",
@@ -932,7 +922,7 @@ export const IDL: BonkyInu = {
       ]
     },
     {
-      "name": "withdrawTokenVault",
+      "name": "withdrawBonkVault",
       "accounts": [
         {
           "name": "withdrawer",

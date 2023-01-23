@@ -59,7 +59,7 @@ export default function PlayerGamePlayedCounter({ program }: Props) {
 
   return (
     <div>
-      <h2 className="text-xl uppercase text-[#FA6E00] font-extrabold">
+      <h2 className="text-xs sm:text-sm md:text-xl mx-2 uppercase text-[#FA6E00] font-bold">
         Game played: <strong>{countGamePlayed}</strong>
       </h2>
     </div>

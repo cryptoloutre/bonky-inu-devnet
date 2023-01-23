@@ -12,7 +12,7 @@ const Obstacles = ({
         <>
             <div style={{
                 position: 'absolute',
-                backgroundColor: "green",
+                backgroundColor: "black",
                 width: obstacleWidth,
                 height: height - obstacleHeight - gap,
                 left: obstaclesLeft,
@@ -20,7 +20,7 @@ const Obstacles = ({
             }}></div>
             <div style={{
                 position: 'absolute',
-                backgroundColor: "yellow",
+                backgroundColor: "black",
                 width: obstacleWidth,
                 height: obstacleHeight,
                 left: obstaclesLeft,

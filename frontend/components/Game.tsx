@@ -1,5 +1,5 @@
 import { Program } from "@project-serum/anchor";
-import { PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
+import { PublicKey } from "@solana/web3.js";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { BonkyInu } from "../idl/bony_inu";
 import { useConnection } from "@solana/wallet-adapter-react";

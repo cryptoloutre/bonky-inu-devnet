@@ -1,7 +1,4 @@
-import Link from "next/link";
-import Title from "../components/Title";
 import { useMemo, useState } from "react";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import {
   AnchorWallet,
   useAnchorWallet,
@@ -14,6 +11,7 @@ import PlayerGamePlayedCounter from "../components/PlayerGamePlayedCounter";
 import WaitingGame from "../components/WaitingGame";
 import PlayerHighscore from "../components/PlayerHighscore";
 import BurnCounter from "../components/BurnCounter";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   const { connection } = useConnection();
@@ -43,32 +41,20 @@ export default function Home() {
     }
   }, [anchorProvider]);
 
+
   return (
     <div>
       {!isPlaying && (
         <div className="flex flex-col items-stretch gap-8 px-4 pt-16 mx-auto w-[60%]">
           <main className="flex flex-col gap-4">
-            <Title />
-
-            <div className="basis-1/4 flex justify-around items-center">
-              <Link href="/">
-                <div className="text-xl uppercase font-bold hover:cursor-pointer">Game</div>
-              </Link>
-              <Link href="/leaderboard">
-              <div className="text-xl uppercase font-bold hover:cursor-pointer">Leaderboard</div>
-              </Link>
-              <Link href="/achievements">
-              <div className="text-xl uppercase font-bold hover:cursor-pointer">Achievements</div>
-              </Link>
-              <WalletMultiButton className="!bg-gray-900 hover:scale-105" />
-            </div>
+            
+            <Navbar />
             <div className="flex justify-around">
               <PlayerGamePlayedCounter program={anchorProgram} />
               <PlayerHighscore program={anchorProgram} />
               <BurnCounter program={anchorProgram} />
             </div>
 
-        {/* <Footer /> */}
           </main>
         </div>
       )}

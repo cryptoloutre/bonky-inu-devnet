@@ -59,7 +59,7 @@ export default function PlayerHighscore({ program }: Props) {
 
   return (
     <div>
-      <h2 className="text-xl uppercase text-[#FA6E00] font-extrabold">
+      <h2 className="text-xs sm:text-sm md:text-xl mx-2 uppercase text-[#FA6E00] font-bold">
         Highscore: <strong>{highscore}</strong>
       </h2>
     </div>

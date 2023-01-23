@@ -53,13 +53,13 @@ export default function WaitingGame({
 
   const getTokenVaultAddress = () => {
     const [tokenVaultPublicKey] = PublicKey.findProgramAddressSync(
-      [Buffer.from("tokenVault")],
+      [Buffer.from("bonkVault")],
       program.programId
     );
     return tokenVaultPublicKey;
   };
 
-  const mint = new PublicKey("4rbzs6LKeu2B68fL1DdPNdWCrEjbR25KeMYXcrU8FKnC"); // à changer par le mint du BONK 
+  const mint = new PublicKey("4rbzs6LKeu2B68fL1DdPNdWCrEjbR25KeMYXcrU8FKnC"); // to change with bonk mint
 
   // Listen to NewGamePlayed events
   useEffect(() => {
@@ -83,7 +83,7 @@ export default function WaitingGame({
     const Tx = new Transaction();
     const tokenAddress = await getAssociatedTokenAddress(
       mint,
-      program.provider.publicKey,
+      program.provider.publicKey
     );
     const playerAddress = getPlayerAddress();
     const playerAccountInfo = await connection.getAccountInfo(playerAddress);
@@ -98,41 +98,10 @@ export default function WaitingGame({
         .instruction();
       Tx.add(initPlayerIx);
     }
-    // const initState = await program.methods
-    //   .initializeStatePda()
-    //   .accounts({
-    //     statepda: getStateAddress(),
-    //     initializer: program.provider.publicKey,
-    //     systemProgram: SystemProgram.programId,
-    //   })
-    //   .rpc();
-
-    // const initTokenVault = await program.methods
-    // .initializeTokenVault()
-    // .accounts({
-    //   tokenpda: getTokenVaultAddress(),
-    //   statepda: getStateAddress(),
-    //   owner: program.provider.publicKey,
-    //   mint: mint,
-    //   systemProgram: SystemProgram.programId,
-    // })
-    // .rpc()
-
-    // const initBurnCounter = await program.methods
-    // .initializeBurnCounter()
-    // .accounts({
-    //   burncounter: getBurnCounterAddress(),
-    //   initializer: program.provider.publicKey
-    // })
-    // .rpc()
-
-    // const initVault = await program.methods.initializeVault().accounts({vault: getVaultAddress(), initializer: program.provider.publicKey}).rpc()
-    // const initupAu = await program.methods.initializeUpdateAuthority().accounts({updateAuthority: getUpdateAuthorityAddress(), initializer: program.provider.publicKey}).rpc()
     const playNewGameIx = await program.methods
       .newGame()
       .accounts({
         owner: program.provider.publicKey,
-        ownerTokenAccount: tokenAddress,
         tokenpda: getTokenVaultAddress(),
         statepda: getStateAddress(),
         burncounter: getBurnCounterAddress(),
@@ -151,8 +120,12 @@ export default function WaitingGame({
       {isPlaying ? (
         <Game program={program} setIsPlaying={setIsPlaying} />
       ) : (
-        <div className="h-[720px] w-[1080px] bg-[#124545] flex justify-center">
-          <div className="mt-[360px]">
+        <div
+        style={{
+          backgroundImage: "url(https://arweave.net/0wWSdKYoBLyu5HZmIcNPO0xr9S2F-i12HKvphwIy6J8)",
+          backgroundSize: "cover",
+         }} className="h-[180px] w-[425px] md:h-[360px] md:w-[770px] lg:h-[720px] lg:w-[1080px] bg-[#124545] flex justify-center">
+          <div className="mt-[50px] md:mt-[150px] lg:mt-[360px]">
             {program ? (
               <div>
                 <div className="flex justify-center">
