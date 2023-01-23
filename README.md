@@ -1,1 +1,1 @@
-# solana-place-devnet
+# Bonky Inu
