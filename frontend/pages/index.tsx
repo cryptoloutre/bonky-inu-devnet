@@ -41,20 +41,19 @@ export default function Home() {
     }
   }, [anchorProvider]);
 
-
   return (
     <div>
       {!isPlaying && (
         <div className="flex flex-col items-stretch gap-8 px-4 pt-16 mx-auto w-[60%]">
           <main className="flex flex-col gap-4">
-            
+
             <Navbar />
+
             <div className="flex justify-around">
               <PlayerGamePlayedCounter program={anchorProgram} />
               <PlayerHighscore program={anchorProgram} />
               <BurnCounter program={anchorProgram} />
             </div>
-
           </main>
         </div>
       )}

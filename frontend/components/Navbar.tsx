@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false);
-    const [width, setWidth] = useState(window.innerWidth)
+    const [width, setWidth] = useState(undefined);
+
+    useEffect(() => {
+      setWidth(window.innerWidth);
+    })
 
     const toggle = () => {
         setToggleMenu(!toggleMenu);
