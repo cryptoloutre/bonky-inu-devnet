@@ -124,7 +124,7 @@ export default function WaitingGame({
         style={{
           backgroundImage: "url(https://arweave.net/0wWSdKYoBLyu5HZmIcNPO0xr9S2F-i12HKvphwIy6J8)",
           backgroundSize: "cover",
-         }} className="h-[180px] w-[425px] md:h-[360px] md:w-[770px] lg:h-[720px] lg:w-[1080px] bg-[#124545] flex justify-center">
+         }} className="h-[180px] w-[425px] md:h-[360px] md:w-[770px] lg:h-[720px] lg:w-[1080px] flex justify-center">
           <div className="mt-[50px] md:mt-[150px] lg:mt-[360px]">
             {program ? (
               <div>
