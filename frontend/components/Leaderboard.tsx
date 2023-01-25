@@ -59,7 +59,7 @@ export default function Leaderboard() {
           if (favoriteDomain != null) {
             owner = favoriteDomain + ".sol";
           } else {
-            owner = owner.toBase58();
+            owner = owner.toBase58().slice(0,5) + "..." + owner.toBase58().slice(-5);
           }
           users.push({
             owner: owner,
@@ -140,7 +140,7 @@ export default function Leaderboard() {
               </div>
             )}
             <div className="flex justify-center mt-6">
-              <table className="border-2 border-gray-300 table-fixed">
+              <table className="border-2 border-gray-300 table-fixed sm:w-[600px] ">
                 <thead className="text-xl">
                   <tr>
                     <th className="px-2 py-2">Position</th>
