@@ -97,7 +97,7 @@ export default function Leaderboard() {
       if (favoriteDomain != null) {
         owner = favoriteDomain + ".sol";
       } else {
-        owner = owner.toBase58();
+        owner = owner.toBase58().slice(0,5) + "..." + owner.toBase58().slice(-5);
       }
       if (users[i]["owner"] == owner) {
         setUserPosition(i + 1);
