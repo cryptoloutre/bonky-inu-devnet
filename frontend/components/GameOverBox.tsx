@@ -162,7 +162,7 @@ const GameOverBox = ({
                   bottom: gameOverBoxHeight / 2.6,
                 }}
               >
-                revived already used
+                revival already used
               </button>
             )}
             <button
