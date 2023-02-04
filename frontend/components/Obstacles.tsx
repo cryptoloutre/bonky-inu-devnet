@@ -5,7 +5,7 @@ const Obstacles = ({
     obstacleHeight,
     obstaclesLeft,
     gap,
-    height
+    height,
 }) => {
 
     return (

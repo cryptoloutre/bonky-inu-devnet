@@ -139,6 +139,31 @@ pub mod bonky_inu {
 
         Ok(())
     }
+    pub fn revive(
+        ctx: Context<Revive>,
+    ) -> Result<()> {
+
+        //uncomment when pushed on mainnet
+
+        // token::burn(
+        //     CpiContext::new(
+        //         ctx.accounts.token_program.to_account_info(),
+        //         token::Burn {
+        //             mint: ctx.accounts.mint.to_account_info(),
+        //             from: ctx.accounts.owner_token_account.to_account_info(),
+        //             authority: ctx.accounts.owner.to_account_info(),
+        //         }
+        //     ),
+        //     5000000000
+        // )?;
+
+        let burncounter = &mut ctx.accounts.burncounter;
+        burncounter.counter += 5000000; //5000000000
+
+        emit!(Revived {});
+
+        Ok(())
+    }
 
     pub fn new_highscore(
         ctx: Context<NewHighscore>,
@@ -664,6 +689,38 @@ pub struct NewGame<'info> {
 }
 
 #[derive(Accounts)]
+pub struct Revive<'info> {
+    #[account(
+        mut,
+        seeds = [b"bonkVault".as_ref()],
+        bump
+     )]
+    pub tokenpda: Account<'info, TokenAccount>,
+    #[account(mut)]
+    pub owner: Signer<'info>,
+    // uncomment when pushed on mainnet
+    // #[account(
+    //     mut,
+    //     constraint=owner_token_account.owner == owner.key(),
+    //     constraint=owner_token_account.mint == tokenpda.mint
+    // )]
+    // pub owner_token_account: Account<'info, TokenAccount>,
+    #[account(
+        mut,
+        constraint=mint.key() == tokenpda.mint,
+    )]
+    pub mint: Account<'info, Mint>,
+    #[account(
+        mut,
+        seeds = [b"burn_counter".as_ref()],
+        bump = burncounter.bump
+    )]
+    burncounter: Account<'info, BurnCounter>,
+    pub system_program: Program<'info, System>,
+    pub token_program: Program<'info, Token>,
+}
+
+#[derive(Accounts)]
 pub struct NewHighscore<'info> {
     #[account(
         mut,
@@ -827,6 +884,9 @@ impl BurnCounter {
 #[event]
 pub struct NewGamePlayed {
     pub game_played: u16,
+}
+#[event]
+pub struct Revived {
 }
 
 #[event]

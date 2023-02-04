@@ -195,6 +195,42 @@ export type BonkyInu = {
       "args": []
     },
     {
+      "name": "revive",
+      "accounts": [
+        {
+          "name": "tokenpda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "burncounter",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
       "name": "newHighscore",
       "accounts": [
         {
@@ -501,6 +537,10 @@ export type BonkyInu = {
           "index": false
         }
       ]
+    },
+    {
+      "name": "Revived",
+      "fields": []
     },
     {
       "name": "NewHighscoreSet",
@@ -794,6 +834,42 @@ export const IDL: BonkyInu = {
       "args": []
     },
     {
+      "name": "revive",
+      "accounts": [
+        {
+          "name": "tokenpda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "burncounter",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
       "name": "newHighscore",
       "accounts": [
         {
@@ -1100,6 +1176,10 @@ export const IDL: BonkyInu = {
           "index": false
         }
       ]
+    },
+    {
+      "name": "Revived",
+      "fields": []
     },
     {
       "name": "NewHighscoreSet",

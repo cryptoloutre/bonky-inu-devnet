@@ -14,11 +14,9 @@ interface Props {
 }
 
 export default function Game({ program, setIsPlaying }: Props) {
-  const { connection } = useConnection();
   const [highscore, setHighscore] = useState<number>(0);
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
   const { height, width } = useWindowDimensions();
-  console.log("height", height, "width", width)
   const [currentScore, setCurrentScore] = useState<number>(0);
   const InuLeft = 10;
   const InuHeight = 60;
@@ -39,6 +37,8 @@ export default function Game({ program, setIsPlaying }: Props) {
   const [obstaclesLeftTwo, setObstaclesLeftTwo] = useState(width / 2 - obstacleWidth / 2);
   const gameOverBoxHeight = height / 2.5;
   const gameOverBoxWidth = width / 5;
+
+  const [revived, setRevived] = useState<boolean>(false);
 
   const getPlayerAddress = () => {
     const [playerPublicKey] = PublicKey.findProgramAddressSync(
@@ -74,10 +74,10 @@ export default function Game({ program, setIsPlaying }: Props) {
     }
     //if i dont have inuBottom as a dependecy, it wont stop
   }, [inuBottom]);
-  console.log(inuBottom);
 
   // //start first obstacle
   useEffect(() => {
+    if (!isGameOver) {
     if (obstaclesLeft > -obstacleWidth) {
       obstaclesTimerId = setInterval(() => {
         setObstaclesLeft((obstaclesLeft) => obstaclesLeft - obstacleSpeed);
@@ -92,10 +92,12 @@ export default function Game({ program, setIsPlaying }: Props) {
         Math.random() * (height - gap - height / 6 - height / 6) + height / 6
       );
     }
-  }, [obstaclesLeft]);
+  }
+  }, [obstaclesLeft, isGameOver]);
 
   // //start second obstacle
   useEffect(() => {
+    if (!isGameOver) {
     if (obstaclesLeftTwo > -obstacleWidth) {
       obstaclesTimerIdTwo = setInterval(() => {
         setObstaclesLeftTwo((obstaclesLeftTwo) => obstaclesLeftTwo - obstacleSpeed);
@@ -110,7 +112,8 @@ export default function Game({ program, setIsPlaying }: Props) {
         Math.random() * (height - gap - height / 6 - height / 6) + height / 6
       );
     }
-  }, [obstaclesLeftTwo]);
+  }
+  }, [obstaclesLeftTwo, isGameOver]);
 
   //check for collisions
   useEffect(() => {
@@ -210,6 +213,12 @@ export default function Game({ program, setIsPlaying }: Props) {
               setIsPlaying={setIsPlaying}
               playerAddress = {getPlayerAddress()}
               program= {program}
+              revived={revived}
+              setRevived={setRevived}
+              setIsGameOver={setIsGameOver}
+              setInuBottom={setInuBottom}
+              setObstaclesLeft={setObstaclesLeft}
+              setObstaclesLeftTwo={setObstaclesLeftTwo}
             />
             <Inu
               InuBottom={inuBottom}
