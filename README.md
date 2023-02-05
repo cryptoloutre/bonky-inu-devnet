@@ -1,6 +1,6 @@
 # Bonky Inu
 
-https://user-images.githubusercontent.com/35653371/216822414-b0929f4e-763e-4489-b156-89a1b295eced.mp4
+https://user-images.githubusercontent.com/35653371/216823945-f82e1653-614b-4a05-80ab-a64a300756f9.mp4
 
 
 ## App
